@@ -18,7 +18,7 @@
 
     <div class="container">
         <div class="game-board" style="border: 1px dotted green; height: 500px;">
-            <img src="/images/board2.png" class="img-fluid" alt="Juega">
+            <img src="/images/board1.png" class="img-fluid" alt="Juega" id="board">
         </div>
         <div class="dashboard">
             <div class="players" id="players"></div>
@@ -32,6 +32,9 @@
                 </div>
                 <div class="btn-new-game">
                     <button type="button" class="btn btn-success btn-lg" onclick="newGame()">NUEVO JUEGO</button>
+                </div>
+                <div class="btn-new-game">
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="changeBoard()">CAMBIAR TABLERO</button>
                 </div>
             </div>
         </div>
