@@ -1,6 +1,6 @@
 const audioElement = document.getElementById("rolling-dice-audio");
 const numPlayers = window.localStorage.getItem('numPlayers');
-
+let currentTurn = -1;
 
 const colors = ['red', 'blue', 'green', 'black', 'purple',
     'orange', 'chocolate', 'darkgrey', 'lawngreen', 'magenta', 'mediumslateblue',
@@ -12,6 +12,7 @@ const diceAnimationClasses = ['roll-1', 'roll-2'];
 const boards = ['board1.png', 'board2.png', 'board3.jpeg'];
 const currentBoard = window.localStorage.getItem('currentBoard');
 window.localStorage.setItem('currentBoard', !!currentBoard ? currentBoard : 0);
+
 
 
 
@@ -35,6 +36,7 @@ function rollDice() {
     setTimeout(() => {
         removeAnimationDice(die1Element, die2Element);
         btnRollDice.disabled = false;
+        nextTurn();
     }, 2000);
 
 }
@@ -62,6 +64,26 @@ function assignateNumberToDice(die, num) {
 
 function playAudio() {
     audioElement.play();
+}
+
+function nextTurn() {
+    // First roll
+    if (currentTurn === -1) {
+        currentTurn = 0;
+        document.getElementById(`token-${currentTurn}`).classList.add('turn');
+        return;
+    }
+    // Returning to player 1
+    if (currentTurn + 1 >= numPlayers) {
+        document.getElementById(`token-${currentTurn}`).classList.remove('turn');
+        currentTurn = 0;
+        document.getElementById(`token-${currentTurn}`).classList.add('turn');
+        return;
+    }
+    document.getElementById(`token-${currentTurn}`).classList.remove('turn');
+    currentTurn += 1;
+    document.getElementById(`token-${currentTurn}`).classList.add('turn');
+
 }
 
 function newGame() {

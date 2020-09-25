@@ -9,7 +9,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style/style.css">
+
+
+    <script type="text/javascript">
+        var _c = new Date().getTime();
+        document.write('<link rel="stylesheet" href="/style/style.css?c=' + _c + '"><\/link>');
+    </script>
 
     <title>Juega la Oca</title>
 </head>
@@ -28,13 +33,15 @@
                     <span class="icon two" id="die2"></span>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="rollDice()" id="btn-roll-dice">TIRAR LOS DADOS</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="rollDice()" id="btn-roll-dice">TIRAR
+                        LOS DADOS</button>
                 </div>
                 <div class="btn-new-game">
                     <button type="button" class="btn btn-success btn-lg" onclick="newGame()">NUEVO JUEGO</button>
                 </div>
                 <div class="btn-new-game">
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="changeBoard()">CAMBIAR TABLERO</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="changeBoard()">CAMBIAR
+                        TABLERO</button>
                 </div>
             </div>
         </div>
