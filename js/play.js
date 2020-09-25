@@ -6,6 +6,9 @@ const colors = ['red', 'blue', 'green', 'black', 'purple',
     'orange', 'chocolate', 'darkgrey', 'lawngreen', 'magenta', 'mediumslateblue',
     'mediumspringgreen', 'navy', 'orangered', 'peru', 'yellow'];
 
+const diceNumberClasses = ['one', 'two', 'three', 'four', 'five', 'six'];
+const diceAnimationClasses = ['roll-1', 'roll-2'];
+
 const boards = ['board1.png', 'board2.png', 'board3.jpeg'];
 const currentBoard = window.localStorage.getItem('currentBoard');
 window.localStorage.setItem('currentBoard', !!currentBoard ? currentBoard : 0);
@@ -14,6 +17,47 @@ window.localStorage.setItem('currentBoard', !!currentBoard ? currentBoard : 0);
 
 function rollDice() {
     playAudio();
+    const die1Element = document.getElementById('die1');
+    const die2Element = document.getElementById('die2');
+    const btnRollDice = document.getElementById('btn-roll-dice');
+
+    animateDice(die1Element, die2Element);
+    btnRollDice.disabled = true;
+    removeAllNumberClassToDie(die1Element);
+    removeAllNumberClassToDie(die2Element);
+
+    const num1 = Math.floor(Math.random() * 6);
+    const num2 = Math.floor(Math.random() * 6);
+    assignateNumberToDice(die1Element, num1);
+    assignateNumberToDice(die2Element, num2);
+
+
+    setTimeout(() => {
+        removeAnimationDice(die1Element, die2Element);
+        btnRollDice.disabled = false;
+    }, 2000);
+
+}
+
+function removeAllNumberClassToDie(element) {
+    for (let z = 0; z < diceNumberClasses.length - 1; z++) {
+        element.classList.remove(diceNumberClasses[z]);
+    }
+}
+
+function animateDice(die1, die2) {
+    die1.classList.add(diceAnimationClasses[0]);
+    die2.classList.add(diceAnimationClasses[1]);
+}
+
+function removeAnimationDice(die1, die2) {
+    die1.classList.remove(diceAnimationClasses[0]);
+    die2.classList.remove(diceAnimationClasses[1]);
+}
+
+
+function assignateNumberToDice(die, num) {
+    die.classList.add(diceNumberClasses[num]);
 }
 
 function playAudio() {
@@ -79,7 +123,7 @@ function createTokens() {
         </svg>
     </div>
     `;
-    console.log('i', i + 1)
+
             playersHtmlDiv.innerHTML += tokenHtmlSecondRow;
         }
 

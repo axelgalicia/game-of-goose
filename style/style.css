@@ -153,3 +153,41 @@ body {
     left: 800px;
   }
 }
+
+.roll-1 {
+  position: relative;
+  animation-name: roll-dice-1;
+  animation-duration: 1.5s;
+}
+
+.roll-2 {
+  position: relative;
+  animation-name: roll-dice-2;
+  animation-duration: 1.8s;
+}
+
+@keyframes roll-dice-1 {
+  0%   {  bottom:0px; transform: rotateX(60deg); background-color: blue;}
+  20%  {  bottom:50px; transform: rotateY(60deg); background-color: yellow; }
+  30%  {  bottom:70px; transform: rotateX(120deg); background-color: red; }
+  40%  {  bottom:80px; transform: rotateY(120deg); background-color: aqua; }
+  50%  {  bottom:100px; transform: rotateX(240deg); background-color: purple; } 
+  60%  {  bottom:150px; transform: rotateY(240deg); background-color: chartreuse;}
+  70%  {  bottom:120px; transform: rotateX(120deg); background-color: antiquewhite;}
+  80%  {  bottom:80px; transform: rotateY(360deg); background-color: lightcoral;}
+  90%  {  bottom:0px; transform: rotateX(0deg); background-color: green;}
+}
+
+@keyframes roll-dice-2 {
+  0%   {  bottom:0px; transform: rotateX(60deg); background-color: aqua;}
+  20%  {  bottom:50px; transform: rotateY(60deg); background-color: lightcoral; }
+  30%  {  bottom:70px; transform: rotateX(120deg); background-color: purple; }
+  40%  {  bottom:80px; transform: rotateY(120deg); background-color: red; }
+  50%  {  bottom:100px; transform: rotateX(240deg); background-color: yellow; } 
+  60%  {  bottom:150px; transform: rotateY(240deg); background-color: green;}
+  70%  {  bottom:120px; transform: rotateX(120deg); background-color: orange;}
+  80%  {  bottom:80px; transform: rotateY(360deg); background-color: silver;}
+  90%  {  bottom:0px; transform: rotateX(0deg); background-color: blue;}
+}
+
+
