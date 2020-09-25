@@ -1,4 +1,4 @@
-const maxPlayers = 20;
+const maxPlayers = 34;
 
 function prepareDropdown() {
     for (let i = 0; i < maxPlayers; i++) {

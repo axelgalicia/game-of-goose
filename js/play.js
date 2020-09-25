@@ -42,7 +42,10 @@ function createTokens() {
     const playersHtmlDiv = document.getElementById('players');
 
     for (let i = 0; i < numPlayers; i++) {
-        const tokenHtml = `<div id="token-${i}"  class="token" style="left: calc(${i * 50}px + 290px)">
+
+        if (i < 17) {
+            const playersHtmlDiv = document.getElementById('players');
+            const tokenHtmlFirstRow = `<div id="token-${i}"  class="token" style="left: calc(${i * 50}px + 290px)">
             <svg class="${colors[i < 16 ? i : (i - 16 + 1)]}" height="60" viewBox="0 0 512 512" width="60"
                 xmlns="http://www.w3.org/2000/svg">
                 <style>
@@ -56,8 +59,32 @@ function createTokens() {
             </svg>
         </div>
     `;
-        playersHtmlDiv.innerHTML += tokenHtml;
+
+            playersHtmlDiv.innerHTML += tokenHtmlFirstRow;
+        }
+
+        if (i >= 17) {
+
+            const tokenHtmlSecondRow = `<div id="token-${i}"  class="token" style="left: calc(-560px + ${i * 50}px); top:600px">
+        <svg class="${colors[i < 16 ? i : (i - 19 + 1)]}" height="60" viewBox="0 0 512 512" width="60"
+            xmlns="http://www.w3.org/2000/svg">
+            <style>
+            .small { font: italic 190px sans-serif; fill: white;}
+          </style>
+            <g>
+                <path
+                    d="m396.621 482-57.54-256.829c27.436-23.464 44.849-58.308 44.849-97.24 0-70.654-57.276-127.931-127.93-127.931s-127.93 57.277-127.93 127.93c0 38.932 17.413 73.776 44.849 97.24l-57.54 256.83h-52.907v30h387.057v-30zm-140.621-435.133c44.698 0 81.063 36.365 81.063 81.063h-30c0-28.156-22.907-51.063-51.063-51.063z" />
+                    <text x="130" y="430" class="small">${i + 1}</text>
+            </g>
+        </svg>
+    </div>
+    `;
+    console.log('i', i + 1)
+            playersHtmlDiv.innerHTML += tokenHtmlSecondRow;
+        }
+
     }
+
 }
 
 createTokens()
