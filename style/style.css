@@ -1,0 +1,30 @@
+.icon {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+}
+
+.one {
+  background-image: url(/images/die1.svg);
+}
+
+.two {
+  background-image: url(/images/die2.svg);
+}
+
+.three {
+  background-image: url(/images/die3.svg);
+}
+
+.four {
+  background-image: url(/images/die4.svg);
+}
+
+.five {
+  background-image: url(/images/die5.svg);
+}
+
+.six {
+  background-image: url(/images/die6.svg);
+}
