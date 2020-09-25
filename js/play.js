@@ -42,7 +42,7 @@ function rollDice() {
 }
 
 function removeAllNumberClassToDie(element) {
-    for (let z = 0; z < diceNumberClasses.length - 1; z++) {
+    for (let z = 0; z < diceNumberClasses.length; z++) {
         element.classList.remove(diceNumberClasses[z]);
     }
 }
