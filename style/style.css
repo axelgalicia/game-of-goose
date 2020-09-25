@@ -28,3 +28,23 @@
 .six {
   background-image: url(/images/die6.svg);
 }
+
+.intro-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.btn-select-players {
+  height: 60px;
+  position: absolute;
+  left: 125px;
+}
+
+@media only screen and (min-width: 700px) {
+  .btn-select-players {
+    left: 800px;
+  }
+}
