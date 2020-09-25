@@ -1,6 +1,6 @@
 <!-- Created by: Axel Galicia -->
 <!-- axelgalicia@gmail.com -->
-
+<!-- Date: Sep 25th, 2020 -->
 <!doctype html>
 <html lang="en">
 
@@ -18,42 +18,22 @@
 
 <body>
 
-
     <div class="container">
-
         <div class="intro-container">
             <div>
                 <img src="/images/kids.svg" class="img-fluid" alt="Juega">
             </div>
-          
+
             <div class="dropdown btn-select-players">
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Selecciona
+                    Seleccionar
                 </a>
-    
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#" onclick="start(1)">1</a>
-                    <a class="dropdown-item" href="#" onclick="start(2)">2</a>
-                    <a class="dropdown-item" href="#" onclick="start(3)">3</a>
-                    <a class="dropdown-item" href="#" onclick="start(4)">4</a>
-                    <a class="dropdown-item" href="#" onclick="start(5)">5</a>
-                    <a class="dropdown-item" href="#" onclick="start(6)">6</a>
-                    <a class="dropdown-item" href="#" onclick="start(7)">7</a>
-                    <a class="dropdown-item" href="#" onclick="start(8)">8</a>
-                    <a class="dropdown-item" href="#" onclick="start(9)">9</a>
-                    <a class="dropdown-item" href="#" onclick="start(10)">10</a>
-                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="number-players-dropdown"></div>
             </div>
         </div>
 
-        
-
-
-
     </div>
-
-    
 
 
     <!-- Optional JavaScript -->
@@ -67,7 +47,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-    <script src="/js/intro.js"></script>
+        <script type="text/javascript">
+            var _c = new Date().getTime();
+            document.write('<script type="text/javascript" src="js/index.js?c=' + _c + '"><\/script>');
+        </script>
 </body>
 
 </html>

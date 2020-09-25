@@ -1,6 +1,5 @@
 const audioElement = document.getElementById("rolling-dice-audio");
-const urlParams = new URLSearchParams(window.location.search);
-const numPlayers = urlParams.get('jugadores');
+const numPlayers = window.localStorage.getItem('numPlayers');
 
 const colors = ['red', 'blue', 'green', 'black', 'purple',
     'orange', 'chocolate', 'darkgrey', 'lawngreen', 'magenta', 'mediumslateblue',
@@ -15,13 +14,17 @@ function playAudio() {
     audioElement.play();
 }
 
+function newGame() {
+    window.location.href = '/';
+}
+
 function createTokens() {
 
     const playersHtmlDiv = document.getElementById('players');
 
     for (let i = 0; i < numPlayers; i++) {
-        const tokenHtml = `<div id="token-${i}"  class="token" style="left: calc(${i * 50}px + 320px)">
-            <svg class="${colors[i]}" height="60" viewBox="0 0 512 512" width="60"
+        const tokenHtml = `<div id="token-${i}"  class="token" style="left: calc(${i * 50}px + 290px)">
+            <svg class="${colors[i < 16 ? i : (16 /i)]}" height="60" viewBox="0 0 512 512" width="60"
                 xmlns="http://www.w3.org/2000/svg">
                 <style>
                 .small { font: italic 190px sans-serif; fill: white;}
