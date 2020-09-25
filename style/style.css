@@ -1,7 +1,12 @@
+body {
+  max-width: --board-width 900px;
+  margin: auto;
+}
+
 .icon {
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-size: cover;
 }
 
@@ -41,6 +46,106 @@
   height: 60px;
   position: absolute;
   left: 125px;
+}
+
+.game-board {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  max-width: --board-width;
+}
+
+.dashboard {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  max-width: --board-width;
+  border: 1px dotted green;
+  padding: 20px;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dice-container {
+  min-width: 145px;
+}
+
+.btn-new-game {
+  margin-top: 10px;
+}
+
+.token {
+  cursor: move;
+  height: 50px;
+  position: absolute;
+}
+
+.turn {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.red {
+  fill: red;
+}
+.blue {
+  fill: blue;
+}
+.green {
+  fill: green;
+}
+.black {
+  fill: black;
+}
+.purple {
+  fill: purple;
+}
+.orange {
+  fill: orange;
+}
+.chocolate {
+  fill: chocolate;
+}
+.darkgrey {
+  fill: darkgrey;
+}
+.lawngreen {
+  fill: lawngreen;
+}
+.magenta {
+  fill: magenta;
+}
+
+.mediumslateblue {
+  fill: mediumslateblue;
+}
+
+.mediumspringgreen {
+  fill: mediumspringgreen;
+}
+
+.navy {
+  fill: navy;
+}
+
+.orangered {
+  fill: orangered;
+}
+
+.peru {
+  fill: peru;
+}
+
+.yellow {
+  fill: yellow;
 }
 
 @media only screen and (min-width: 700px) {

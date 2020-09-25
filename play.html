@@ -16,16 +16,27 @@
 
 <body>
 
-    <h1>Juego de la Oca</h1>
+    <div class="container">
+        <div class="game-board" style="border: 1px dotted green; height: 500px;">
+            <img src="/images/board2.png" class="img-fluid" alt="Juega">
+        </div>
+        <div class="dashboard">
+            <div class="players" id="players"></div>
+            <div class="dice-container" ondragover="allowDrop(event)">
+                <div>
+                    <span class="icon one" id="die1"></span>
+                    <span class="icon two" id="die2"></span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="rollDice()">TIRAR LOS DADOS</button>
+                </div>
+                <div class="btn-new-game">
+                    <button type="button" class="btn btn-success btn-lg" onclick="rollDice()">NUEVO JUEGO</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div>
-        <button onclick="playAudio()" type="button">TIRAR DADOS</button>
-        <span class="icon one"></span>
-        <span class="icon two"></span>
-        <span class="icon three"></span>
-        <span class="icon four"></span>
-        <span class="icon five"></span>
-        <span class="icon six"></span>
     </div>
 
 
