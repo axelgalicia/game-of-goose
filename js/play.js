@@ -168,12 +168,12 @@ registerDragging();
 
 function registerDragging() {
     for (let i = 0; i < numPlayers; i++) {
-        dragElement1(document.getElementById(`token-${i}`));
+        dragElementHandler(document.getElementById(`token-${i}`));
     }
 
 }
 
-function dragElement1(elmnt) {
+function dragElementHandler(elmnt) {
     let currentX = 0;
     let currentY = 0;
     let initialX = 0;
@@ -222,7 +222,6 @@ function dragElement1(elmnt) {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - currentY) + "px";
         elmnt.style.left = (elmnt.offsetLeft - currentX) + "px";
-        console.log(elmnt.style.top, elmnt.style.left);
     }
 
     function closeDragElement() {
