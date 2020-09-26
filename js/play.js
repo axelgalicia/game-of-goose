@@ -168,12 +168,12 @@ registerDragging();
 
 function registerDragging() {
     for (let i = 0; i < numPlayers; i++) {
-        dragElement(document.getElementById(`token-${i}`));
+        dragElement1(document.getElementById(`token-${i}`));
     }
 
 }
 
-function dragElement(elmnt) {
+function dragElement1(elmnt) {
     let currentX = 0;
     let currentY = 0;
     let initialX = 0;
@@ -189,24 +189,23 @@ function dragElement(elmnt) {
         if (e.type === 'touchstart') {
             initialX = e.touches[0].clientX;
             initialY = e.touches[0].clientY;
-            document.addEventListener('touchend', closeDragElement, { passive: false })
-            document.addEventListener('touchmove', elementDrag, { passive: false })
+            document.addEventListener('touchend', closeDragElement, { passive: false });
+            document.addEventListener('touchmove', elementDrag, { passive: false });
 
-        } else {
+         } else {
             // get the mouse cursor position at startup:
             initialX = e.clientX;
-            initiaY = e.clientY;
+            initialY = e.clientY;
             document.onmouseup = closeDragElement;
             // call a function whenever the cursor moves:
             document.onmousemove = elementDrag;
-        }
+         }
 
     }
 
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-
         if (e.type === 'touchmove') {
             currentX = initialX - e.touches[0].clientX;
             currentY = initialY - e.touches[0].clientY;
@@ -223,6 +222,7 @@ function dragElement(elmnt) {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - currentY) + "px";
         elmnt.style.left = (elmnt.offsetLeft - currentX) + "px";
+        console.log(elmnt.style.top, elmnt.style.left);
     }
 
     function closeDragElement() {
@@ -230,6 +230,8 @@ function dragElement(elmnt) {
         document.onmouseup = null;
         document.onmousemove = null;
         // Mobile
+        document.ontouchend = null;
+        document.ontouchmove = null;
         document.removeEventListener('touchend', closeDragElement, { passive: false })
         document.removeEventListener('touchmove', elementDrag, { passive: false })
     }
