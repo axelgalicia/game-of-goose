@@ -1,3 +1,8 @@
+/*
+Resources:
+https://www.kirupa.com/html5/drag.htm
+*/
+
 const audioElement = document.getElementById("rolling-dice-audio");
 const numPlayers = window.localStorage.getItem('numPlayers');
 let currentTurn = -1;
@@ -164,38 +169,64 @@ function registerDragging() {
 }
 
 function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let initialX = 0;
+    let initialY = 0;
 
-    elmnt.onmousedown = dragMouseDown;
+    elmnt.onmousedown = dragStart;
+    elmnt.ontouchstart = dragStart;
 
-
-    function dragMouseDown(e) {
+    function dragStart(e) {
         e = e || window.event;
         e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
+
+        if (e.type === 'touchstart') {
+            initialX = e.touches[0].clientX;
+            initialY = e.touches[0].clientY;
+            document.addEventListener('touchend', closeDragElement, { passive: false })
+            document.addEventListener('touchmove', elementDrag, { passive: false })
+
+        } else {
+            // get the mouse cursor position at startup:
+            initialX = e.clientX;
+            initiaY = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
     }
 
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
+
+        if (e.type === 'touchmove') {
+            currentX = initialX - e.touches[0].clientX;
+            currentY = initialY - e.touches[0].clientY;
+            initialX = e.touches[0].clientX;
+            initialY = e.touches[0].clientY;
+        } else {
+            // calculate the new cursor position:
+            currentX = initialX - e.clientX;
+            currentY = initialY - e.clientY;
+            initialX = e.clientX;
+            initialY = e.clientY;
+        }
+
         // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        elmnt.style.top = (elmnt.offsetTop - currentY) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - currentX) + "px";
+        console.log(elmnt.style.top);
     }
 
     function closeDragElement() {
         // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
+        // Mobile
+        document.removeEventListener('touchend', closeDragElement, { passive: false })
+        document.removeEventListener('touchmove', elementDrag, { passive: false })
     }
 }
