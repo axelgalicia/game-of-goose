@@ -20,7 +20,6 @@ window.localStorage.setItem('currentBoard', !!currentBoard ? currentBoard : 0);
 
 
 
-
 function rollDice() {
     playAudio();
     const die1Element = document.getElementById('die1');
@@ -32,10 +31,8 @@ function rollDice() {
     removeAllNumberClassToDie(die1Element);
     removeAllNumberClassToDie(die2Element);
 
-    const num1 = Math.floor(Math.random() * 6);
-    const num2 = Math.floor(Math.random() * 6);
-    assignateNumberToDice(die1Element, num1);
-    assignateNumberToDice(die2Element, num2);
+    assignateNumberToDice(die1Element, random(0, 6));
+    assignateNumberToDice(die2Element, random(0, 6));
 
 
     setTimeout(() => {
@@ -44,6 +41,9 @@ function rollDice() {
         nextTurn();
     }, 2000);
 
+}
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 function removeAllNumberClassToDie(element) {
@@ -80,15 +80,22 @@ function nextTurn() {
     }
     // Returning to player 1
     if (currentTurn + 1 >= numPlayers) {
-        document.getElementById(`token-${currentTurn}`).classList.remove('turn');
+        removeClass(`token-${currentTurn}`, 'turn');
         currentTurn = 0;
-        document.getElementById(`token-${currentTurn}`).classList.add('turn');
+        addClass(`token-${currentTurn}`, 'turn');
         return;
     }
-    document.getElementById(`token-${currentTurn}`).classList.remove('turn');
+    removeClass(`token-${currentTurn}`, 'turn');
     currentTurn += 1;
-    document.getElementById(`token-${currentTurn}`).classList.add('turn');
+    addClass(`token-${currentTurn}`, 'turn');
 
+}
+function addClass(elementId, className) {
+    document.getElementById(elementId).classList.add(className);
+}
+
+function removeClass(elementId, className) {
+    document.getElementById(elementId).classList.remove(className);
 }
 
 function newGame() {
@@ -99,12 +106,10 @@ function changeBoard() {
     const board = document.getElementById('board');
     let current = parseInt(window.localStorage.getItem('currentBoard'), 10);
     current += 1;
-    console.log(current)
     if (current > boards.length - 1) {
         current = 0;
     }
     window.localStorage.setItem('currentBoard', current);
-
     board.src = `/images/${boards[current]}`;
 }
 
@@ -218,7 +223,6 @@ function dragElement(elmnt) {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - currentY) + "px";
         elmnt.style.left = (elmnt.offsetLeft - currentX) + "px";
-        console.log(elmnt.style.top);
     }
 
     function closeDragElement() {
